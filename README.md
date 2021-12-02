@@ -1,85 +1,70 @@
-Challenge for Fullstack Developer
-===============================
+# Getting Started with Create React App
 
-To better assess a candidate's development skills, we would like to provide the following challenge. This is intended to be developed in a remote asyncronously way with continues communication.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-It's allowed to use documentation and online resources.
+## Available Scripts
 
-Prerequisites
--------------
+In the project directory, you can run:
 
-* [Git](https://git-scm.com/)
-* A frontend framework of choice, we are open to whatever, we use React, Typescript in Diwala
-* Some storage of choice LocalStorage, [IndexDB](https://developers.google.com/web/ilt/pwa/lab-indexeddb), [SQLLite](https://www.sqlite.org/index.html), [Firebase](https://firebase.google.com/), [MongoDB](https://www.mongodb.com/), [MySQL](https://www.mysql.com/), [PostgresSQL](https://www.postgresql.org/) or any other suiting storage you find.
+### `npm start`
 
-Installation
-------------
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-Start a new repo with this README in it.
-We are note merging back to this repo because this repo shall stay clean of solutions
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-Generate a project. You can add libraries of your choice, but be ready to describe them.
+### `npm test`
 
-**We will not count any time spent until you have a working environment and made your choice of libs and stack**
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-Project description
--------------------
-# Intro
-You are free to solve this in any storage/backend form you like, take what is easiest for you. Remember to read the whole text and evaluation before you start any coding. It is important information there.
+### `npm run build`
 
-The main goal of this task is to see your frontend code structure, not look at your data model backend API or how things are stored, but to be able to build any logic in the frontend, you need some storage or mock. Just make sure to explain what choices you have done.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-It does not have to be pixel perfect, but it helps that you have some nice structure and flow that makse sense, because the frontend developer is translating designes into usable view.
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-**Pizzeria**
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-The application serves the purpose of ordering pizza online.
+### `npm run eject`
 
-The following should be possible:
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-* I can order a pizza of type X and price (e.g. Margherita $5, Pepperoni $6, ...)
-* I have an order of items
-* This item in an order has pizza type and the number of pizzaes of that type
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-The "Create Order" function should allow the user to select pizza types and amounts, add to the order, see current total, and place (save) the order.
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-Additionally, the following functions should be considered:
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-* List the different orders
-* Details of an individual order.
-* I can test the code somewhere easily accessible
+## Learn More
 
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-Optional features:
+### Code Splitting
 
-* meaningful model validations (e.g. item amount > 0)
-* order bonuses (e.g. 5% cheaper when total over $50, 10% cheaper when total over ...)
-* tests
-* authentication
-* whatever interesting you'd like to do
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-Evaluation
-----------
+### Analyzing the Bundle Size
 
-Our goal is to find answers to those questions:
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-* Do you understand the chosen stack, framework and any patterns used in general?
-* Can you setup components that are clear and easy to use?
-* Is your frontend code efficient
-* Do you master your working environment?
+### Making a Progressive Web App
 
-To set a scope of the task, so we dont take too much of your time, consider the following:
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-* It is not important to have a fully production ready application at the end, we find our way and scope along the way. 
-* Take the shortcuts that feels fine to explain away.
-* The goals might shift during the progress as we discuss during the work flow
+### Advanced Configuration
 
-We just want to see at what level of engangement and knowledge you put yourself.
-If you decide to do a simple implementation and explain the rest of future work in words and clear detail, that is also an option.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-Levels of functionality:
+### Deployment
 
-* **basic** - items mentioned in description work
-* **above average** - some optional features
-* **exceptional** - getting the app to continuously build, deploy to the cloud, give a url to work with, etc.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

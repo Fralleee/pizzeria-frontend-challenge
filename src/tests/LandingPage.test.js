@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import LandingPage from "../components/LandingPage";
+import LandingPage from "components/LandingPage";
 
 test("renders pizzeria name", () => {
   render(<LandingPage />);

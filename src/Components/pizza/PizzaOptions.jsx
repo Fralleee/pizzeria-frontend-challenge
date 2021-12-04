@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {  collection } from "firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
-import Loader from 'components/common/Loader'
+import Loader from '../common/Loader'
 import Pizza from "./Pizza";
 
 const Container = styled.div`

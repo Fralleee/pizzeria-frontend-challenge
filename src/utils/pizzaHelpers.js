@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import MargheritaImage from "images/margherita.svg";
-import VegetarianImage from "images/vegetarian.svg";
-import PepperoniImage from "images/pepperoni.svg";
+import MargheritaImage from "../images/margherita.svg";
+import VegetarianImage from "../images/vegetarian.svg";
+import PepperoniImage from "../images/pepperoni.svg";
 
 const PizzaImage = styled.img`
   max-width: 160px;

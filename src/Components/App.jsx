@@ -8,9 +8,9 @@ import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import FirebaseConfig from "../firebaseConfig";
-import LandingPage from "components/LandingPage";
-import PizzaOptions from "components/pizza/PizzaOptions";
-import UserControls from "components/UserControls";
+import LandingPage from "./LandingPage";
+import PizzaOptions from "./pizza/PizzaOptions";
+import UserControls from "./UserControls";
 
 firebase.initializeApp(FirebaseConfig);
 

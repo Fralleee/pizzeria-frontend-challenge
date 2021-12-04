@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PizzaImageMap } from 'utils/pizzaHelpers';
+import { PizzaImageMap } from '../../utils/pizzaHelpers';
 
 const Container = styled.div`
   display: flex;

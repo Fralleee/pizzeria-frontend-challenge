@@ -9,27 +9,18 @@ on:
       - main
 
 jobs:
-  test:
-    name: Run Test Suite
+  build-test-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set-up Node
+        uses: actions/setup-node@v1
         with:
-          node-version: 12
-          registry-url: https://npm.pkg.github.com/
-          scope: '@tenna-llc'
-      - run: sudo apt-get update
-      - run: git fetch --all
-      - name: Cache node_modules/
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: ${{ runner.OS }}-package-lock-cache-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: ${{ runner.OS }}-package-lock-cache-
-      - run: npm i
-      - run: npm test
+          node-version: "10.x"
+      - run: npm install
       - run: npm run build
+      - run: npm test
       - name: Deploy
         uses: crazy-max/ghaction-github-pages@v1
         with:

@@ -1,22 +1,19 @@
-import { SignIn, SignOut } from "./Authentication";
+import styled from 'styled-components';
+import { SignIn } from "./SignInButton";
 
-const LandingPage = ({ user, auth }) => {
+const Header = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+`
+
+const LandingPage = ({ auth }) => {
   return (
-    <section>
-      {user ? (
-        <div>
-          <center>
-            Welcome back {user.displayName}
-            <SignOut auth={auth} />
-          </center>
-        </div>
-      ) : (
-        <div>
-          <h1>Diwala Pizzeria</h1>
-          <SignIn auth={auth} />
-        </div>
-      )}
-    </section>
+    <Header>
+      <h1>Diwala Pizzeria</h1>
+      <SignIn auth={auth} />
+    </Header>
   );
 };
 

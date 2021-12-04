@@ -8,9 +8,9 @@ import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import FirebaseConfig from "./firebaseConfig";
-import LandingPage from "./Components/LandingPage";
-import PizzaOptions from "./Components/PizzaOptions";
-import "./App.css";
+import LandingPage from "components/LandingPage";
+import PizzaOptions from "components/pizza/PizzaOptions";
+import UserControls from "components/UserControls";
 
 firebase.initializeApp(FirebaseConfig);
 
@@ -19,13 +19,13 @@ const firestore = getFirestore();
 
 const App = () => {
   const [user] = useAuthState(auth);
-  return (
-    <div className="App">
-      <header className="App-header">
-        <LandingPage user={user} auth={auth} />
-        <PizzaOptions db={firestore} />
-      </header>
+  return user ? (
+    <div>
+      <UserControls auth={auth} />
+      <PizzaOptions db={firestore} />
     </div>
+  ) : (
+    <LandingPage auth={auth} />
   );
 };
 

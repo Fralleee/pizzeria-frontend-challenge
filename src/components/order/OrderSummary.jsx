@@ -1,7 +1,10 @@
-import styled from 'styled-components';
-import { Button } from 'components/common/Button';
+import { OrderContext } from "contexts/OrderContext"
+import { useContext } from "react"
+import styled from "styled-components"
+import { Button } from "components/common/Button"
+import { getBonusAmounts, getBonusText, getNextAvailableBonusText, calculateBonus } from "businessLogic/bonusLogic"
 
-// #region styled
+//#region styled
 const Container = styled.div`
   width: 100%;
   min-height: 120px;
@@ -11,11 +14,15 @@ const Container = styled.div`
   align-items: center;
 `
 const Bonus = styled.div`
-  height: 50px;
   width: 100%;
   text-align: center;
   padding: 1rem;
   background: #f0f0f0;
+  margin: 1rem 0;
+
+  p {
+    margin: 0;
+  }
 `
 const OrderButton = styled(Button)`
   width: 100%;
@@ -25,41 +32,41 @@ const TextContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin: 0.25rem 0;
 `
-const Text = styled.h3` margin: 0; ` 
+const Text = styled.h3` margin: 0; `
 const SmallText = styled.h4`
   margin: 0;
   color: #666;
+  font-weight: normal;
 `
-// #endregion
+//#endregion
 
-const OrderSummary = ({ order }) => {
-  const totalAmountWithoutBonus = order.reduce((acc, curr) => acc += curr.cost * curr.amount, 0);
-  const bonusThreshhold = 50;
-  const bonusAmountPercentage = .1;
-  const eligibleForBonus = totalAmountWithoutBonus > bonusThreshhold;
-  const bonusText = eligibleForBonus
-    ? `You have received ${bonusAmountPercentage * 100}% bonus` 
-    : `Spend $${(Math.round(totalAmountWithoutBonus - bonusThreshhold * 100) / 100).toFixed(2)} to receive ${bonusAmountPercentage * 100}% bonus`
-  const totalAmount = eligibleForBonus ? totalAmountWithoutBonus * 1 - bonusAmountPercentage : totalAmountWithoutBonus;
+const OrderSummary = () => {
+  const { order } = useContext(OrderContext)
+  const bonus = calculateBonus(order)
+  const bonusText = bonus.appliedBonus && getBonusText(bonus.appliedBonus)
+  const bonusAmounts = getBonusAmounts(bonus.amount, bonus.appliedBonus)
+  const nextAvailableBonusText = bonus.nextAvailableBonus && getNextAvailableBonusText(bonus.amount, bonus.nextAvailableBonus)
 
   return (
     <Container>
-      <Bonus>{bonusText}</Bonus>
-      {eligibleForBonus && (
+      <Bonus>
+        <p>{bonusText}</p>
+        {nextAvailableBonusText && <p>{nextAvailableBonusText}</p>}
+      </Bonus>
+      {bonus.appliedBonus && (
         <TextContainer>
           <SmallText>Bonus</SmallText>
-          <SmallText>-${(Math.round(totalAmountWithoutBonus * bonusAmountPercentage * 100) / 100).toFixed(2)}</SmallText>
+          <SmallText>-${(Math.round(bonusAmounts.bonusOnly * 100) / 100).toFixed(2)}</SmallText>
         </TextContainer>
       )}
       <TextContainer>
         <Text>Total</Text>
-        <Text>${(Math.round(totalAmount * 100) / 100).toFixed(2)}</Text>
+        <Text>${(Math.round(bonusAmounts.total * 100) / 100).toFixed(2)}</Text>
       </TextContainer>
-      <OrderButton>Place order</OrderButton>
+      <OrderButton disabled={order.length === 0}>Place order</OrderButton>
     </Container>
-  );
-};
+  )
+}
 
-export default OrderSummary;
+export default OrderSummary

@@ -1,12 +1,12 @@
-import styled from 'styled-components';
-import { useEffect, useRef, useState } from 'react';
-import { useAuthState } from "react-firebase-hooks/auth";
-import { signOut } from "firebase/auth";
-import { FcPortraitMode, FcExpand, FcCollapse } from "react-icons/fc";
-import { scaleIn } from 'styles/Animation';
-import ShoppingCart from "components/ShoppingCart";
+import styled from "styled-components"
+import { useEffect, useRef, useState } from "react"
+import { useAuthState } from "react-firebase-hooks/auth"
+import { signOut } from "firebase/auth"
+import { FcPortraitMode, FcExpand, FcCollapse } from "react-icons/fc"
+import { scaleIn } from "styles/Animation"
+import ShoppingCart from "components/ShoppingCart"
 
-// #region styled
+//#region styled
 const Container = styled.div`
   position: absolute;
   top: 0;
@@ -65,20 +65,22 @@ const Option = styled.li`
   align-items: center;
   padding: 0 1rem;
   height: 50px;
+  user-select: none;
+  cursor: pointer;
 
   &:hover {
     background-color: rgb(250, 250, 250);
   }
 `
-// #endregion
+//#endregion
 
 const UserControls = ({ auth }) => {
   const ref = useRef()
-  const [user] = useAuthState(auth);
-  const [open, setOpen] = useState(false);
+  const [user] = useAuthState(auth)
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    const checkIfClickedOutside = e => open && !ref.current?.contains(e.target) && setOpen(false);
+    const checkIfClickedOutside = e => open && !ref.current?.contains(e.target) && setOpen(false)
     document.addEventListener("mousedown", checkIfClickedOutside)
     return () => document.removeEventListener("mousedown", checkIfClickedOutside)
   }, [open])
@@ -92,12 +94,12 @@ const UserControls = ({ auth }) => {
       </Header>
 
       {open && <Options>
-        <Option onClick={() => console.log('TODO')}>My orders</Option>
+        <Option onClick={() => console.log("TODO")}>My orders</Option>
         <Option onClick={() => signOut(auth)}>Sign-out</Option>
       </Options>}
       <ShoppingCart />
     </Container>
-  );
-};
+  )
+}
 
-export default UserControls;
+export default UserControls

@@ -5,6 +5,13 @@ To better assess a candidate's development skills, we would like to provide the 
 
 It's allowed to use documentation and online resources.
 
+Progress
+-------------
+- [Live demo](https://fralleee.github.io/diwala-frontend-challenge/)
+- [Detailed progress](https://github.com/Fralleee/diwala-frontend-challenge/issues)
+- [CI/CD](https://github.com/Fralleee/diwala-frontend-challenge/actions)
+
+
 Prerequisites
 -------------
 

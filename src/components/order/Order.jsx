@@ -1,11 +1,11 @@
-import styled from 'styled-components';
-import OrderHeader from './OrderHeader';
-import OrderList from './OrderList';
-import OrderSummary from './OrderSummary';
-import Button from 'components/common/Button';
-import { IoCloseSharp } from 'react-icons/io5'
+import styled from "styled-components"
+import OrderHeader from "./OrderHeader"
+import OrderList from "./OrderList"
+import OrderSummary from "./OrderSummary"
+import Button from "components/common/Button"
+import { IoCloseSharp } from "react-icons/io5"
 
-// #region styled
+//#region styled
 const Container = styled.div`
   position: relative;
   display: flex;
@@ -32,28 +32,17 @@ const CloseButton = styled(Button)`
     font-size: 1.5rem;
   }
 `
-// #endregion
+//#endregion
 
 const Order = ({ close }) => {
-  const order = [
-    { name: 'Margherita', size: 'small', cost: 6, amount: 2 },
-    { name: 'Margherita', size: 'medium', cost: 8, amount: 1 },
-    { name: 'Margherita', size: 'large', cost: 8, amount: 1 },
-    { name: 'Funghi', size: 'small', cost: 8, amount: 1 },
-    { name: 'Funghi', size: 'medium', cost: 8, amount: 1 },
-    { name: 'Funghi', size: 'large', cost: 8, amount: 1 },
-    { name: 'Tomaso', size: 'small', cost: 8, amount: 1 },
-    { name: 'Tomaso', size: 'medium', cost: 8, amount: 1 },
-    { name: 'Tomaso', size: 'large', cost: 8, amount: 11 }
-  ]
   return (
     <Container>
       <CloseButton onClick={close}><IoCloseSharp /></CloseButton>
       <OrderHeader />
-      <OrderList order={order} />
-      <OrderSummary order={order} />
+      <OrderList />
+      <OrderSummary />
     </Container>
-  );
-};
+  )
+}
 
-export default Order;
+export default Order

@@ -1,9 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import styled from 'styled-components';
-import { scaleInWithOrigin } from 'styles/Animation';
+import React from "react"
+import ReactDOM from "react-dom"
+import styled from "styled-components"
+import { scaleInWithOrigin } from "styles/Animation"
 
-// #region styled
+//#region styled
 const ModalContainer = styled.div`
   position: fixed;
   z-index: 999999;
@@ -25,7 +25,7 @@ const Overlay = styled.div`
   z-index: 99999;
   cursor: pointer;
 `
-// #endregion
+//#endregion
 
 const Modal = ({ close, origin, children }) => {
   return ReactDOM.createPortal(
@@ -33,8 +33,8 @@ const Modal = ({ close, origin, children }) => {
       <Overlay onClick={close} />
       <ModalContainer origin={origin}>{children}</ModalContainer>
     </>,
-    document.getElementById('modal-root'),
-  );
+    document.getElementById("modal-root")
+  )
 }
 
-export default Modal;
+export default Modal

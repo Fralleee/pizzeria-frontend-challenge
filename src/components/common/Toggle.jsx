@@ -1,6 +1,7 @@
-import { useState } from "react";
-import styled from 'styled-components';
+import { useState } from "react"
+import styled from "styled-components"
 
+//#region styled
 const Container = styled.div`
   display: flex;
   padding: .5rem;
@@ -25,15 +26,16 @@ const Option = styled.button`
     color: white;  
   }
 `
+//#endregion
 
 const Toggle = ({ items, defaultChecked, callback }) => {
-  const defaultSelected = defaultChecked ? items.indexOf(defaultChecked) : -1;
-  const [selected, setSelected] = useState(defaultSelected);
+  const defaultSelected = defaultChecked ? items.indexOf(defaultChecked) : -1
+  const [selected, setSelected] = useState(defaultSelected)
 
   const handleClick = (e, i) => {
-    setSelected(i);
-    callback(e, i);
-  };
+    setSelected(i)
+    callback(e, i)
+  }
 
   return (
     <Container>
@@ -43,7 +45,7 @@ const Toggle = ({ items, defaultChecked, callback }) => {
         </Option>
       )}
     </Container>
-  );
-};
+  )
+}
 
-export default Toggle;
+export default Toggle

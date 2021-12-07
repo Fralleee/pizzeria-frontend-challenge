@@ -1,10 +1,10 @@
-import styled from 'styled-components';
-import { PizzaImageMap } from 'utils/pizzaHelpers';
-import { useState } from 'react';
-import Modal from 'components/common/Modal';
-import { sizes } from 'utils/sizeHelpers';
-import PizzaCustomization from './PizzaCustomization';
+import styled from "styled-components"
+import { useState } from "react"
+import Modal from "components/common/Modal"
+import { pizzaSizes, pizzaImages } from "constants/pizzaConstants"
+import PizzaCustomization from "./PizzaCustomization"
 
+//#region styled
 const Container = styled.div`
   padding: 2rem 1.5rem 1.5rem 1.5rem;
   margin: 1rem;
@@ -59,26 +59,27 @@ const PriceRange = styled.h2`
   margin-top: 0;
   margin-bottom: 1rem;
 `
+//#endregion
 
 const Pizza = ({ pizza }) => {
-  const [open, setOpen] = useState(false);
-  const [origin, setOrigin] = useState({});
+  const [open, setOpen] = useState(false)
+  const [origin, setOrigin] = useState({})
 
-  const maxExtraCost = Math.max(...sizes.map(x => x.extraCost));
+  const maxExtraCost = Math.max(...pizzaSizes.map(x => x.extraCost))
 
   const openModal = e => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setOrigin({ left: rect.left - rect.width * 0.5, top: rect.top - rect.height * 0.5 });
-    setOpen(true);
+    const rect = e.currentTarget.getBoundingClientRect()
+    setOrigin({ left: rect.left - rect.width * 0.5, top: rect.top - rect.height * 0.5 })
+    setOpen(true)
   }
-  const closeModal = () => setOpen(false);
+  const closeModal = () => setOpen(false)
 
-  const minCost = (Math.round(pizza.cost * 100) / 100).toFixed(2);
-  const maxCost = (Math.round((pizza.cost + maxExtraCost) * 100) / 100).toFixed(2);
+  const minCost = (Math.round(pizza.cost * 100) / 100).toFixed(2)
+  const maxCost = (Math.round((pizza.cost + maxExtraCost) * 100) / 100).toFixed(2)
   return (
     <>
       <Container onClick={openModal}>
-        {PizzaImageMap[pizza.name]}
+        {pizzaImages[pizza.name]}
         <Name>{pizza.name}</Name>
         <Description>{pizza.description}</Description>
         <PriceRange>${minCost} - {maxCost}</PriceRange>
@@ -86,7 +87,7 @@ const Pizza = ({ pizza }) => {
       </Container>
       {open && <Modal origin={origin} close={closeModal}><PizzaCustomization pizza={pizza} close={closeModal} /></Modal>}
     </>
-  );
-};
+  )
+}
 
-export default Pizza;
+export default Pizza

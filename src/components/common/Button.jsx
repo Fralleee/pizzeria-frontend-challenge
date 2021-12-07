@@ -1,5 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components"
 
+//#region
 const ButtonComponent = styled.button`
   background-color: var(--primary-color);
   color: white;
@@ -11,13 +12,19 @@ const ButtonComponent = styled.button`
   border-radius: 48px;
   border: 1px solid transparent;
 
-  &:hover {    
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  &:hover::not(:disabled) {    
     border-color: var(--primary-color);
     background-color: white;
     color: var(--primary-color);
   }
 `
+//#endregion
 
-export const Button = ({ onClick, className, children }) => <ButtonComponent onClick={onClick} className={className}>{children}</ButtonComponent>;
+export const Button = ({ onClick, className, children, disabled }) => <ButtonComponent disabled={disabled} onClick={onClick} className={className}>{children}</ButtonComponent>
 
-export default Button;
+export default Button

@@ -1,9 +1,13 @@
-import styled from 'styled-components';
+import { OrderContext } from "contexts/OrderContext"
+import { useContext } from "react"
+import styled from "styled-components"
+import OrderAmountButton from "./OrderAmountButton"
 
-// #region styled
+//#region styled
 const Container = styled.ul`
   min-height: 100px;
-  max-height: 300px;
+  height: 300px;
+  max-height: 35vh;
   overflow-y: scroll;
   width: 100%;
   padding: 0 1rem;
@@ -11,9 +15,12 @@ const Container = styled.ul`
 `
 
 const OrderItem = styled.li`
+  position: relative;
+  height: 48px;
   display: flex;
   justify-content: space-between;
-  margin-top: .5rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
 `
 
 const ItemName = styled.h4`
@@ -42,25 +49,44 @@ const CostAndAmount = styled.div`
   justify-content: flex-end;
   width: 200px;
 `
-// #endregion
 
-const OrderList = ({ order }) => {
+const NoPizza = styled.h4`
+  font-weight: normal;
+  color: #aaa;
+  font-style: italic;
+  text-align: center;
+`
+//#endregion
+
+const OrderList = () => {
+  const { order, remove, increment, decrement } = useContext(OrderContext)
+
+  const handleAmountButton = (item, change) => {
+    if (change < 0 && item.amount === 1) remove(item)
+    else if (change < 0) decrement(item)
+    else increment(item)
+  }
+
   return (
     <Container>
-      {order.map(item => (
-        <OrderItem key={item.name + item.size}>
-          <ItemName>
-            {item.name}
-            <ExtraInformation>{item.size}</ExtraInformation>
-            <ExtraInformation>x{item.amount}</ExtraInformation>
-          </ItemName>
-          <CostAndAmount>
-            <Cost>${(Math.round(item.cost * item.amount * 100) / 100).toFixed(2)}</Cost>
-          </CostAndAmount>
-        </OrderItem>
-      ))}
+      {order.length === 0 ? (
+        <NoPizza>Nothing here</NoPizza>
+      ) : (
+        order.map(item => (
+          <OrderItem key={item.name + item.size}>
+            <OrderAmountButton item={item} callback={handleAmountButton} />
+            <ItemName>
+              {item.name}
+              <ExtraInformation>{item.size}</ExtraInformation>
+            </ItemName>
+            <CostAndAmount>
+              <Cost>${(Math.round(item.cost * item.amount * 100) / 100).toFixed(2)}</Cost>
+            </CostAndAmount>
+          </OrderItem>
+        ))
+      )}
     </Container>
-  );
-};
+  )
+}
 
-export default OrderList;
+export default OrderList

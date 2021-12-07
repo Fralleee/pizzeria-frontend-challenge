@@ -1,11 +1,12 @@
-import { useState } from "react";
-import { IoCloseSharp } from 'react-icons/io5'
-import styled from 'styled-components';
-import { Button } from 'components/common/Button';
-import Toggle from 'components/common/Toggle';
-import { PizzaImageMap } from 'utils/pizzaHelpers';
-import { sizes } from 'utils/sizeHelpers';
+import { useContext, useState } from "react"
+import { IoCloseSharp } from "react-icons/io5"
+import styled from "styled-components"
+import { Button } from "components/common/Button"
+import Toggle from "components/common/Toggle"
+import { pizzaSizes, pizzaImages } from "constants/pizzaConstants"
+import { OrderContext } from "contexts/OrderContext"
 
+//#region styled
 const Container = styled.div`
   padding: 2em 1.5em;
   margin: 1em;
@@ -89,13 +90,18 @@ const Cost = styled.h1`
     margin-bottom: .5em;
   }
 `
+//#endregion
 
 const PizzaCustomization = ({ pizza, close }) => {
-  const [size, setSize] = useState(sizes[0]);
-  const sizeOptions = sizes.map(x => x.size);
+  const { add } = useContext(OrderContext)
+  const [size, setSize] = useState(pizzaSizes[0])
+  const sizeOptions = pizzaSizes.map(x => x.size)
 
-  const selectedSize = (e, i) => {
-    setSize(sizes[i]);
+  const selectedSize = (e, i) => setSize(pizzaSizes[i])
+
+  const placeOrder = () => {
+    add({ ...pizza, size: size.size })
+    close()
   }
 
   return (
@@ -103,14 +109,13 @@ const PizzaCustomization = ({ pizza, close }) => {
       <CloseButton onClick={close}><IoCloseSharp /></CloseButton>
       <Name>{pizza.name}</Name>
       <Ingredients>{pizza.ingredients}</Ingredients>
-      {PizzaImageMap[pizza.name]}
-
+      {pizzaImages[pizza.name]}
       <Size>{size.description}</Size>
       <Cost>${(Math.round((pizza.cost + size.extraCost) * 100) / 100).toFixed(2)}</Cost>
       <Toggle items={sizeOptions} defaultChecked={sizeOptions[0]} callback={selectedSize} />
-      <PlaceOrder>Get in my belly!</PlaceOrder>
+      <PlaceOrder onClick={placeOrder}>Get in my belly!</PlaceOrder>
     </Container>
-  );
-};
+  )
+}
 
-export default PizzaCustomization;
+export default PizzaCustomization

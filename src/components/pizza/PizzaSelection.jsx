@@ -1,10 +1,10 @@
-import styled from 'styled-components';
-import { collection } from "firebase/firestore";
-import { useCollectionData } from "react-firebase-hooks/firestore";
-import Loader from 'components/common/Loader'
-import Pizza from "./Pizza";
-import BackgroundImage from "images/background.svg";
+import styled from "styled-components"
+import { collection } from "firebase/firestore"
+import { useCollectionData } from "react-firebase-hooks/firestore"
+import Pizza from "./Pizza"
+import BackgroundImage from "images/background.svg"
 
+//#region styled
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -27,11 +27,19 @@ const PizzaContainer = styled.div`
 `
 
 const Title = styled.h1`
+  font-family: 'Dancing Script', cursive;
   text-align: center;
-  font-size: 3rem;
+  font-size: 6rem;
+  margin: 1rem;
+  font-weight: bold;
+  
+  @media (max-width: 500px) {
+    font-size: 3rem;
+    margin: 1rem;
+  }
 `
 
-const BG = styled.img`
+const Background = styled.img`
   position:absolute;
   left: 0;
   right: 0;
@@ -39,23 +47,25 @@ const BG = styled.img`
   bottom: 0;
   z-index: -1;
   opacity: 0.1;
-  /* max-width: 80%; */
-` 
+    
+  @media (max-width: 500px) {
+    top:100px;
+  }
+`
+//#endregion
 
 const PizzaSelection = ({ db }) => {
-  const query = collection(db, "pizzas");
-  const [pizzas, loading] = useCollectionData(query);
+  const query = collection(db, "pizzas")
+  const [pizzas] = useCollectionData(query)
   return (
     <Container>
-    <BG src={BackgroundImage} alt="Background vector graphics" />
+      <Background src={BackgroundImage} alt="Background vector graphics" />
       <Title>Get your dough here!</Title>
-      {loading ? <Loader /> : (
-        <PizzaContainer>
-          {pizzas.map(pizza => <Pizza key={pizza.name} pizza={pizza} />)}
-        </PizzaContainer>
-      )}
+      <PizzaContainer>
+        {pizzas?.map(pizza => <Pizza key={pizza.name} pizza={pizza} />)}
+      </PizzaContainer>
     </Container>
-  );
-};
+  )
+}
 
-export default PizzaSelection;
+export default PizzaSelection

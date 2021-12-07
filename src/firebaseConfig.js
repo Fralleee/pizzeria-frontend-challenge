@@ -5,7 +5,7 @@ const config = {
   storageBucket: "pizzeria-backend-8f722.appspot.com",
   messagingSenderId: "894177049580",
   appId: "1:894177049580:web:440bef1ad250fc66a2dec9",
-  measurementId: "G-C3D8M0NJVV",
-};
+  measurementId: "G-C3D8M0NJVV"
+}
 
-export default config;
+export default config

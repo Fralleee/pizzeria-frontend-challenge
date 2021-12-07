@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components"
 
-// #region styled
+//#region styled
 const Container = styled.div`
   height: 50px;
   line-height: 50px;
@@ -10,12 +10,12 @@ const Container = styled.div`
   background-color: var(--primary-color);
   color: white;
 `
-// #endregion
+//#endregion
 
 const OrderHeader = () => {
   return (
     <Container>Your current order</Container>
-  );
-};
+  )
+}
 
-export default OrderHeader;
+export default OrderHeader

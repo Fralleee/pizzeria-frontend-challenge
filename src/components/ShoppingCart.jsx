@@ -9,6 +9,7 @@ import Order from "components/order/Order"
 const CartButton = styled(Button)`
   position: fixed;
   top: 64px;
+  right: 1rem;
   margin-left: 180px;
   margin-top: 1rem;
   height: 3rem;

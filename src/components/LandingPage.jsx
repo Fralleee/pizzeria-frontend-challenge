@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { getAuth } from "firebase/auth"
 import { SignIn } from "./SignInButton"
 
 //#region styled
@@ -11,7 +12,8 @@ const Header = styled.section`
 `
 //#endregion
 
-const LandingPage = ({ auth }) => {
+const LandingPage = () => {
+  const auth = getAuth()
   return (
     <Header>
       <h1>Diwala Pizzeria</h1>

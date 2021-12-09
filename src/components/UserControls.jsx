@@ -1,26 +1,30 @@
 import styled from "styled-components"
 import { useEffect, useRef, useState } from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
-import { signOut } from "firebase/auth"
+import { signOut, getAuth } from "firebase/auth"
 import { FcPortraitMode, FcExpand, FcCollapse } from "react-icons/fc"
 import { scaleIn } from "styles/Animation"
 import ShoppingCart from "components/ShoppingCart"
+import Modal from "components/common/Modal"
+import OrderHistory from "./orderHistory/OrderHistory"
 
 //#region styled
 const Container = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  min-width: 240px;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  min-height: 75px;
   font-size: 1.25rem;
+  background-color: rgba(255,255,255,.9);
   z-index: 999;
 `
 
 const Header = styled.div`
-  position: fixed;
-  cursor: pointer;
+  position: fixed;  
+  top: 0;
+  right: 0;
   padding: 2rem 1rem 1rem 1rem;
-  background-color: white;
+  cursor: pointer;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -33,7 +37,8 @@ const Header = styled.div`
 
 const Options = styled.ul`
   position: fixed;
-  top: 50px;
+  top: 3.5rem;
+  right: 1rem;
   width: 240px;
   display: flex;
   flex-direction: column;
@@ -74,10 +79,22 @@ const Option = styled.li`
 `
 //#endregion
 
-const UserControls = ({ auth }) => {
+const UserControls = () => {
+  const auth = getAuth()
   const ref = useRef()
   const [user] = useAuthState(auth)
   const [open, setOpen] = useState(false)
+
+  const [openHistory, setOpenHistory] = useState(false)
+  const [origin, setOrigin] = useState({})
+
+  const openModal = e => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    setOrigin({ left: rect.left - rect.width * 0.5, top: rect.top - rect.height * 0.5 })
+    setOpenHistory(true)
+    setOpen(false)
+  }
+  const closeModal = () => setOpenHistory(false)
 
   useEffect(() => {
     const checkIfClickedOutside = e => open && !ref.current?.contains(e.target) && setOpen(false)
@@ -86,19 +103,22 @@ const UserControls = ({ auth }) => {
   }, [open])
 
   return (
-    <Container ref={ref}>
-      <Header onClick={() => setOpen(!open)}>
-        <FcPortraitMode />
-        {user.displayName}
-        {open ? <FcCollapse /> : <FcExpand />}
-      </Header>
+    <>
+      <Container ref={ref}>
+        <Header onClick={() => setOpen(!open)}>
+          <FcPortraitMode />
+          {user.displayName}
+          {open ? <FcCollapse /> : <FcExpand />}
+        </Header>
 
-      {open && <Options>
-        <Option onClick={() => console.log("TODO")}>My orders</Option>
-        <Option onClick={() => signOut(auth)}>Sign-out</Option>
-      </Options>}
-      <ShoppingCart />
-    </Container>
+        {open && <Options>
+          <Option onClick={openModal}>My orders</Option>
+          <Option onClick={() => signOut(auth)}>Sign-out</Option>
+        </Options>}
+        <ShoppingCart />
+      </Container>
+      {openHistory && <Modal origin={origin} close={closeModal}><OrderHistory close={closeModal} /></Modal>}
+    </>
   )
 }
 

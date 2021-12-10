@@ -11,6 +11,9 @@ Progress
 - [Detailed progress](https://github.com/Fralleee/diwala-frontend-challenge/issues)
 - [CI/CD](https://github.com/Fralleee/diwala-frontend-challenge/actions)
 
+Screenshot
+-------------
+![full-page-1366](https://user-images.githubusercontent.com/6375613/145613883-29de107b-7ef0-4c59-9a88-a21853966eea.png)
 
 Prerequisites
 -------------

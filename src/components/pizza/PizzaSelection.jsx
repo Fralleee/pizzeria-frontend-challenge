@@ -1,8 +1,8 @@
 import styled from "styled-components"
-import { collection } from "firebase/firestore"
+import { collection, getFirestore } from "firebase/firestore"
 import { useCollectionData } from "react-firebase-hooks/firestore"
-import Pizza from "./Pizza"
 import BackgroundImage from "images/background.svg"
+import Pizza from "./Pizza"
 
 //#region styled
 const Container = styled.div`
@@ -10,11 +10,12 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 100px;
+  padding-top: 3rem;
   padding-bottom: 200px;
+  user-select: none;
   
   @media (max-width: 500px) {
-    margin: .5rem 0;
+    margin: 0;
     width: 100%;
     max-width: none;
   }
@@ -24,6 +25,7 @@ const PizzaContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  z-index: 1;
 `
 
 const Title = styled.h1`
@@ -32,20 +34,20 @@ const Title = styled.h1`
   font-size: 6rem;
   margin: 1rem;
   font-weight: bold;
+  user-select: none;
   
   @media (max-width: 500px) {
     font-size: 3rem;
-    margin: 1rem;
+    margin: 0 1rem;
   }
 `
 
 const Background = styled.img`
   position:absolute;
-  left: 0;
-  right: 0;
-  top:0;
+  left: 2rem;
+  right: 2rem;
+  top:100px;
   bottom: 0;
-  z-index: -1;
   opacity: 0.1;
     
   @media (max-width: 500px) {
@@ -54,8 +56,9 @@ const Background = styled.img`
 `
 //#endregion
 
-const PizzaSelection = ({ db }) => {
-  const query = collection(db, "pizzas")
+const PizzaSelection = () => {
+  const firestore = getFirestore()
+  const query = collection(firestore, "pizzas")
   const [pizzas] = useCollectionData(query)
   return (
     <Container>

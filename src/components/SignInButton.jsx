@@ -11,5 +11,5 @@ export const SignIn = ({ auth }) => {
     })
   }
 
-  return <Button onClick={signInWithGoogle}>Sign-in with Google</Button>
+  return <Button tabIndex={0} onClick={signInWithGoogle}>Sign-in with Google</Button>
 }

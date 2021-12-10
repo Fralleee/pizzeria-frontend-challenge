@@ -2,8 +2,6 @@ import "firebase/firestore"
 import "firebase/auth"
 
 import firebase from "firebase/compat/app"
-
-import { getFirestore } from "firebase/firestore"
 import { getAuth } from "firebase/auth"
 import { useAuthState } from "react-firebase-hooks/auth"
 
@@ -16,17 +14,16 @@ import { OrderProvider } from "contexts/OrderContext"
 firebase.initializeApp(FirebaseConfig)
 
 const auth = getAuth()
-const firestore = getFirestore()
 
 const App = () => {
   const [user] = useAuthState(auth)
   return user ? (
     <OrderProvider>
-      <UserControls auth={auth} />
-      <PizzaSelection db={firestore} />
+      <UserControls />
+      <PizzaSelection />
     </OrderProvider>
   ) : (
-    <LandingPage auth={auth} />
+    <LandingPage />
   )
 }
 

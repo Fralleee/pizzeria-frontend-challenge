@@ -1,3 +1,17 @@
 :root {
-  --primary-color: #5d05a7;
+  // Colors
+  --primary-color: rgb(93, 5, 167);
+  --primary-color-80: rgba(93, 5, 167, .8);
+  
+  // Box shadows
+  --button-shadow: rgba(17, 12, 46, 0.25) 0 4px 8px;
+  --center-shadow: rgba(17, 12, 46, 0.15) 0 0 24px 0px;
+  --header-shadow: rgba(17, 12, 46, 0.15) 0px 12px 24px 0px;
+  --modal-shadow: rgba(17, 12, 46, 0.25) 0px 48px 100px 0px;
+  --pizza-shadow: rgba(177, 116, 10, 0.6) 0px 4px 36px;
+  --card-shadow: rgba(17, 12, 46, 0.15) 0px 12px 24px 0px;
+  --card-shadow-hover: rgba(17, 12, 46, 0.075) 0px 24px 32px 0px;
+
+  // Easings
+  --bounce: cubic-bezier(0.34, 1.56, 0.64, 1)
 }

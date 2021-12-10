@@ -1,5 +1,4 @@
 import { useContext, useState } from "react"
-import { IoCloseSharp } from "react-icons/io5"
 import styled from "styled-components"
 import { Button } from "components/common/Button"
 import Toggle from "components/common/Toggle"
@@ -19,7 +18,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: white;
-  box-shadow: rgba(51, 47, 75, 0.25) 0px 48px 100px 0px;
+  box-shadow: var(--modal-shadow);
   border-radius: 28px;
   transition: all 0.2s ease;
   user-select: none;
@@ -31,33 +30,17 @@ const Container = styled.div`
   & img {
     border-radius: 50%;
     max-width: 60%;
-    box-shadow: rgba(177, 116, 10, 0.6) 0px 4px 36px;
+  box-shadow: var(--pizza-shadow);
   }  
 `
 const PlaceOrder = styled(Button)`
   margin-top: 1em;
-  border-radius: 5px;
   font-size: 1.2rem;
-  width: 12em;
+  width: 10em;
   
   @media (max-width: 500px) {
     margin-top: 1em;
     font-size: .8rem;
-  }
-`
-
-const CloseButton = styled(Button)`
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 2em;
-  height: 2em;
-  border-radius: 50%;
-  line-height: 2.25em;
-  font-size: 2rem;
-  
-  @media (max-width: 500px) {
-    font-size: 1.5rem;
   }
 `
 
@@ -106,14 +89,13 @@ const PizzaCustomization = ({ pizza, close }) => {
 
   return (
     <Container>
-      <CloseButton onClick={close}><IoCloseSharp /></CloseButton>
       <Name>{pizza.name}</Name>
       <Ingredients>{pizza.ingredients}</Ingredients>
       {pizzaImages[pizza.name]}
       <Size>{size.description}</Size>
       <Cost>${(Math.round((pizza.cost + size.extraCost) * 100) / 100).toFixed(2)}</Cost>
       <Toggle items={sizeOptions} defaultChecked={sizeOptions[0]} callback={selectedSize} />
-      <PlaceOrder onClick={placeOrder}>Get in my belly!</PlaceOrder>
+      <PlaceOrder tabIndex={0} onClick={placeOrder}>Get in my belly!</PlaceOrder>
     </Container>
   )
 }

@@ -40,7 +40,7 @@ const Toggle = ({ items, defaultChecked, callback }) => {
   return (
     <Container>
       {items.map((item, i) =>
-        <Option key={i} name={item} className={i === selected ? "active" : ""} onClick={e => handleClick(e, i)}>
+        <Option key={i} name={item} className={i === selected ? "active" : ""} tabIndex={0} onClick={e => handleClick(e, i)}>
           {item}
         </Option>
       )}

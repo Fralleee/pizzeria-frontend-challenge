@@ -10,11 +10,12 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 100px;
+  padding-top: 3rem;
   padding-bottom: 200px;
+  user-select: none;
   
   @media (max-width: 500px) {
-    margin: .5rem 0;
+    margin: 0;
     width: 100%;
     max-width: none;
   }
@@ -24,6 +25,7 @@ const PizzaContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  z-index: 1;
 `
 
 const Title = styled.h1`
@@ -36,17 +38,16 @@ const Title = styled.h1`
   
   @media (max-width: 500px) {
     font-size: 3rem;
-    margin: 1rem;
+    margin: 0 1rem;
   }
 `
 
 const Background = styled.img`
   position:absolute;
-  left: 0;
-  right: 0;
-  top:0;
+  left: 2rem;
+  right: 2rem;
+  top:100px;
   bottom: 0;
-  z-index: -1;
   opacity: 0.1;
     
   @media (max-width: 500px) {

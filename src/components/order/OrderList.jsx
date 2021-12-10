@@ -6,7 +6,7 @@ import OrderAmountButton from "./OrderAmountButton"
 //#region styled
 const Container = styled.ul`
   min-height: 100px;
-  height: 300px;
+  height: 260px;
   max-height: 35vh;
   overflow-y: scroll;
   width: 100%;

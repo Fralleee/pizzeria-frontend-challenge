@@ -7,7 +7,11 @@ const Header = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 150px;
+  margin-top: -150px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-size: calc(10px + 2vmin);
 `
 //#endregion

@@ -35,9 +35,9 @@ const Button = styled.button`
 const OrderAmountButton = ({ item, callback }) => {
   return (
     <Container>
-      <Button onClick={() => callback(item, -1)}>{item.amount > 1 ? <IoMdRemove /> : <IoMdTrash />}</Button>
+      <Button tabIndex={0} onClick={() => callback(item, -1)}>{item.amount > 1 ? <IoMdRemove /> : <IoMdTrash />}</Button>
       <Display>{item.amount}</Display>
-      <Button onClick={() => callback(item, 1)}><IoMdAdd /></Button>
+      <Button tabIndex={0} onClick={() => callback(item, 1)}><IoMdAdd /></Button>
     </Container>
   )
 }

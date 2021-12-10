@@ -3,9 +3,10 @@ import { useState } from "react"
 import Modal from "components/common/Modal"
 import { pizzaSizes, pizzaImages } from "constants/pizzaConstants"
 import PizzaCustomization from "./PizzaCustomization"
+import { ButtonNoStyle } from "components/common/Button"
 
 //#region styled
-const Container = styled.div`
+const Container = styled(ButtonNoStyle)`
   padding: 2rem 1.5rem 1.5rem 1.5rem;
   margin: 1rem;
   width: 250px;
@@ -15,9 +16,9 @@ const Container = styled.div`
   align-items: center;
   background-color: white;
   border-radius: 28px;
-  box-shadow: rgba(17, 12, 46, 0.15) 0px 12px 24px 0px;
+  box-shadow: var(--card-shadow);
   transition: all 0.2s ease;
-  user-select: none;
+  /* user-select: none; */
   cursor: pointer;  
 
   & img {
@@ -27,7 +28,7 @@ const Container = styled.div`
 
   &:hover {
     transform: scale(1.1);
-    box-shadow: rgba(17, 12, 46, 0.075) 0px 24px 32px 0px;
+  box-shadow: var(--card-shadow-hover);
     
     & img {
       max-width: 160px;
@@ -78,14 +79,14 @@ const Pizza = ({ pizza }) => {
   const maxCost = (Math.round((pizza.cost + maxExtraCost) * 100) / 100).toFixed(2)
   return (
     <>
-      <Container onClick={openModal}>
+      <Container tabIndex={0} onClick={openModal}>
         {pizzaImages[pizza.name]}
         <Name>{pizza.name}</Name>
         <Description>{pizza.description}</Description>
         <PriceRange>${minCost} - {maxCost}</PriceRange>
         <Info>Click to customize</Info>
       </Container>
-      {open && <Modal origin={origin} close={closeModal}><PizzaCustomization pizza={pizza} close={closeModal} /></Modal>}
+      <Modal isOpen={open} origin={origin} close={closeModal}><PizzaCustomization pizza={pizza} close={closeModal} /></Modal>
     </>
   )
 }

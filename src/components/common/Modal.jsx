@@ -1,7 +1,9 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import ReactDOM from "react-dom"
 import styled from "styled-components"
-import { scaleInWithOrigin } from "styles/Animation"
+import { IoCloseSharp } from "react-icons/io5"
+import { CloseButton } from "components/common/Button"
+import { scaleInCenter, scaleInWithOrigin, scaleOutCenter, scaleOutWithOrigin } from "styles/Animation"
 
 //#region styled
 const ModalContainer = styled.div`
@@ -11,7 +13,11 @@ const ModalContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;  
-  animation: ${props => scaleInWithOrigin(props.origin)} 300ms cubic-bezier(0.34, 1.56, 0.64, 1) 0ms forwards;
+  animation: ${props => props.origin ? scaleInWithOrigin(props.origin) : scaleInCenter} ${props => props.delay}ms var(--bounce) 0ms forwards;
+
+  &.closing {
+    animation: ${props => props.origin ? scaleOutWithOrigin(props.origin) : scaleOutCenter} ${props => props.delay * 0.5}ms ease-in 0ms forwards;
+  }
 `
 
 const Overlay = styled.div`
@@ -27,12 +33,31 @@ const Overlay = styled.div`
 `
 //#endregion
 
-const Modal = ({ close, origin, children }) => {
-  return ReactDOM.createPortal(
+const Modal = ({ isOpen, delay = 200, close, origin, children }) => {
+  const [isClosing, setIsClosing] = useState(false)
+
+  const handleClose = () => {
+    setIsClosing(true)
+    setTimeout(() => {
+      close()
+      setIsClosing(false)
+    }, delay)
+  }
+
+  useEffect(() => {
+    const closeOnEscape = (e) => e.key === "Escape" && handleClose()
+    window.addEventListener("keydown", closeOnEscape)
+    return () => window.removeEventListener("keydown", closeOnEscape)
+  })
+
+  return ReactDOM.createPortal(isOpen ?
     <>
-      <Overlay onClick={close} />
-      <ModalContainer origin={origin}>{children}</ModalContainer>
-    </>,
+      <Overlay tabIndex={0} onClick={handleClose} />
+      <ModalContainer className={isClosing ? "closing" : ""} delay={delay} origin={origin}>
+        <CloseButton tabIndex={0} onClick={handleClose}><IoCloseSharp /></CloseButton>
+        {children}
+      </ModalContainer>
+    </> : null,
     document.getElementById("modal-root")
   )
 }

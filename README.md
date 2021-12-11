@@ -5,6 +5,14 @@ To better assess a candidate's development skills, we would like to provide the 
 
 It's allowed to use documentation and online resources.
 
+Implemented features
+-------------
+- React App (with DevServer, HMR and linting)
+- Firebase backend (with Firestore database)
+- Authentication using Google accounts
+- CI/CD Workflow using GitHub Actions
+- Live demo using GitHub pages
+
 Progress
 -------------
 - [Live demo](https://fralleee.github.io/diwala-frontend-challenge/)

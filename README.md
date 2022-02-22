@@ -15,9 +15,9 @@ Implemented features
 
 Progress
 -------------
-- [Live demo](https://fralleee.github.io/diwala-frontend-challenge/)
-- [Detailed progress](https://github.com/Fralleee/diwala-frontend-challenge/issues)
-- [CI/CD](https://github.com/Fralleee/diwala-frontend-challenge/actions)
+- [Live demo](https://fralleee.github.io/pizzeria-frontend-challenge/)
+- [Detailed progress](https://github.com/Fralleee/pizzeria-frontend-challenge/issues)
+- [CI/CD](https://github.com/Fralleee/pizzeria-frontend-challenge/actions)
 
 Screenshot
 -------------

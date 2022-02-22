@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/pizzeria-frontend-challenge/static/css/main.dd88d854.chunk.css",
+    "main.js": "/pizzeria-frontend-challenge/static/js/main.e0f68d8b.chunk.js",
+    "main.js.map": "/pizzeria-frontend-challenge/static/js/main.e0f68d8b.chunk.js.map",
+    "runtime-main.js": "/pizzeria-frontend-challenge/static/js/runtime-main.65643691.js",
+    "runtime-main.js.map": "/pizzeria-frontend-challenge/static/js/runtime-main.65643691.js.map",
+    "static/js/2.4996a069.chunk.js": "/pizzeria-frontend-challenge/static/js/2.4996a069.chunk.js",
+    "static/js/2.4996a069.chunk.js.map": "/pizzeria-frontend-challenge/static/js/2.4996a069.chunk.js.map",
+    "static/js/3.b7433216.chunk.js": "/pizzeria-frontend-challenge/static/js/3.b7433216.chunk.js",
+    "static/js/3.b7433216.chunk.js.map": "/pizzeria-frontend-challenge/static/js/3.b7433216.chunk.js.map",
+    "index.html": "/pizzeria-frontend-challenge/index.html",
+    "static/css/main.dd88d854.chunk.css.map": "/pizzeria-frontend-challenge/static/css/main.dd88d854.chunk.css.map",
+    "static/js/2.4996a069.chunk.js.LICENSE.txt": "/pizzeria-frontend-challenge/static/js/2.4996a069.chunk.js.LICENSE.txt",
+    "static/media/background.95106970.svg": "/pizzeria-frontend-challenge/static/media/background.95106970.svg",
+    "static/media/funghi.2d7b418c.svg": "/pizzeria-frontend-challenge/static/media/funghi.2d7b418c.svg",
+    "static/media/margherita.a6495985.svg": "/pizzeria-frontend-challenge/static/media/margherita.a6495985.svg",
+    "static/media/pepperoni.47915a55.svg": "/pizzeria-frontend-challenge/static/media/pepperoni.47915a55.svg",
+    "static/media/tomaso.864766fa.svg": "/pizzeria-frontend-challenge/static/media/tomaso.864766fa.svg",
+    "static/media/vegetarian.862d98da.svg": "/pizzeria-frontend-challenge/static/media/vegetarian.862d98da.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.65643691.js",
+    "static/js/2.4996a069.chunk.js",
+    "static/css/main.dd88d854.chunk.css",
+    "static/js/main.e0f68d8b.chunk.js"
+  ]
+}

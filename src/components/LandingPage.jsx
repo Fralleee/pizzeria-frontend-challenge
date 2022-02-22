@@ -20,7 +20,7 @@ const LandingPage = () => {
   const auth = getAuth()
   return (
     <Header>
-      <h1>Diwala Pizzeria</h1>
+      <h1>Pizzeria</h1>
       <SignIn auth={auth} />
     </Header>
   )

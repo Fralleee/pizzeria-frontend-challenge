@@ -1,8 +1,8 @@
 {
-  "name": "diwala-frontend-challenge",
+  "name": "pizzeria-frontend-challenge",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://fralleee.github.io/diwala-frontend-challenge",
+  "homepage": "http://fralleee.github.io/pizzeria-frontend-challenge",
   "dependencies": {
     "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/react": "^11.2.7",
